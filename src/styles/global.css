@@ -34,6 +34,13 @@ ul {
   list-style-type: '– ';
 }
 
+hr {
+  border-top: rgb(28 25 23) solid 1px;
+  [data-theme='dark'] & {
+    border-top: rgb(250 250 249) solid 1px;
+  }
+}
+
 blockquote {
   font-style: italic;
 }
@@ -50,6 +57,12 @@ pre {
   font-size: 0.875rem;
   border-radius: 0.25rem;
   padding: 1rem;
+
+  /* don't want to break scroll for mobile */
+  /* 4rem is the exact padding of content, but seems to be misaligned with scrollbar */
+  /* so we center align */
+  max-width: calc(100vw - 5rem);
+  margin: 0 auto;
 }
 
 a {

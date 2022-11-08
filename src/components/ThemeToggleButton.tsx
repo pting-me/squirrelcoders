@@ -86,9 +86,10 @@ const ThemeToggleButton: Component = () => {
             <label class={themeName === currentTheme() ? 'checked' : ''}>
               <div
                 class={clsx(
-                  'p-1 m-1 cursor-pointer rounded text-amber-900 dark:text-amber-100 transition-colors hover:text-amber-700 hover:dark:text-amber-300',
-                  themeName === currentTheme() &&
-                    'border border-solid border-amber-900 dark:border-amber-100',
+                  'p-1 m-1 cursor-pointer transition-colors hover:text-amber-700 hover:dark:text-amber-300',
+                  themeName === currentTheme()
+                    ? 'border-b border-solid border-amber-700 dark:border-amber-300 text-amber-700 dark:text-amber-300'
+                    : 'text-amber-900 dark:text-amber-100',
                 )}
               >
                 {icon}

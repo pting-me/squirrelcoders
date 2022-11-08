@@ -20,14 +20,14 @@ const navLinkMap = [
 ];
 ---
 
-<nav class="items-center flex flex-1 font-sans font-bold justify-end uppercase">
+<nav class="items-end flex flex-col flex-1 font-sans font-bold justify-end uppercase sm:flex-row sm:items-center">
   {
     navLinkMap.map(({ page, displayName }) => (
       <a
         class={clsx(
           'p-1 block relative ml-5 transition-colors hover:text-amber-700 hover:dark:text-amber-300',
           page === current
-            ? 'underline underline-offset-4 text-amber-700 dark:text-amber-300'
+            ? 'underline underline-offset-8 text-amber-700 dark:text-amber-300'
             : 'text-amber-900 dark:text-amber-100',
         )}
         href={`/${page}`}
@@ -36,7 +36,7 @@ const navLinkMap = [
       </a>
     ))
   }
-  <div class="ml-8 w-20">
+  <div class="ml-8">
     <ThemeToggleButton client:load />
   </div>
 </nav>

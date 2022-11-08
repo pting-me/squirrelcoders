@@ -22,7 +22,7 @@ allPosts = allPosts.sort(
   current="blog"
 >
   <div class="my-0 mx-auto max-w-2xl w-full">
-    <h1>Blog</h1>
+    <h1 class="mb-16">Blog</h1>
     {
       allPosts.map((post, index) => {
         const href = `/blog/${getSlug(post.file)}`;
