@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import formatPublishDate from '../../utils/formatPublishDate';
 import getSlug from '../../utils/getSlug';
 
 const title = 'Blog';
@@ -10,7 +11,7 @@ let allPosts = await Astro.glob('../../data/blog-posts/*.md');
 allPosts = allPosts.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(a.frontmatter.publishDate).valueOf(),
 );
 ---
 
@@ -34,8 +35,8 @@ allPosts = allPosts.sort(
               </h2>
               <p>{post.frontmatter.description}</p>
               <div class="font-sans font-bold">
-                <span class="text-stone-600 uppercase text-left mr-4">
-                  — {post.frontmatter.publishDate}
+                <span class="text-stone-600 dark:text-stone-300 uppercase text-left mr-4">
+                  — {formatPublishDate(post.frontmatter.publishDate)}
                 </span>
               </div>
             </div>
