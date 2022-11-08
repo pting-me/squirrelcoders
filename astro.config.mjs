@@ -6,9 +6,12 @@ import mdx from '@astrojs/mdx';
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
+import solidJs from "@astrojs/solid-js";
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://astro-blog-template.netlify.app',
-  integrations: [mdx(), svelte(), tailwind()],
+  integrations: [mdx(), svelte(), tailwind(), solidJs()],
   markdown: {
     shikiConfig: {
       theme: 'nord'
