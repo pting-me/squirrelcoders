@@ -1,5 +1,6 @@
 ---
-import ThemeToggleButton from './ThemeToggleButton.svelte';
+// import ThemeToggleButton from './ThemeToggleButton.svelte';
+import ThemeToggleButton from './ThemeToggleButton';
 import clsx from 'clsx';
 
 const { current = '' } = Astro.props;
@@ -35,7 +36,7 @@ const navLinkMap = [
       </a>
     ))
   }
-  <div class="w-20">
+  <div class="ml-8 w-20">
     <ThemeToggleButton client:load />
   </div>
 </nav>
