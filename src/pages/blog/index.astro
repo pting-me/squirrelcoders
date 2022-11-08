@@ -27,7 +27,7 @@ allPosts = allPosts.sort(
         const href = `/blog/${getSlug(post.file)}`;
         return (
           <div>
-            {index !== 0 && <hr class="my-16 mx-auto" />}
+            {index !== 0 && <hr class="my-4 mx-auto" />}
             <div class="post-item">
               <h2>
                 <a href={href}>{post.frontmatter.title}</a>

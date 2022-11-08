@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-color: rgb(231 229 228);
+  color: rgb(28 25 23);
+  [data-theme='dark'] & {
+    background-color: rgb(28 25 23);
+    color: rgb(250 250 249);
+  }
+}
+
 ol,
 ul,
 blockquote {

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -12,7 +14,12 @@ module.exports = {
       xl: '1200px',
       '2xl': '1472px',
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ['Merriweather', ...defaultTheme.fontFamily.serif],
+        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   plugins: [],
 };
