@@ -1,21 +1,46 @@
 ---
+import type { MarkdownInstance } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Bio from '../../components/Bio.astro';
-import getPostData from '../../utils/getPostData';
 import getSlug from '../../utils/getSlug';
 import formatPublishDate from '../../utils/formatPublishDate';
+import readingTime from 'reading-time';
+
+/**
+ * frontmatter that is placed in all blog posts
+ */
+interface BlogFrontmatter {
+  title: string;
+  publishDate: string;
+  description: string;
+}
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../data/blog-posts/*.md');
-  return posts.map((p) => ({
-    params: { slug: getSlug(p.file) },
-    props: { post: p },
+  const posts: MarkdownInstance<BlogFrontmatter>[] = await Astro.glob(
+    '../../data/blog-posts/*.md',
+  );
+  return posts.map((postProps) => ({
+    params: { slug: getSlug(postProps.file) },
+    props: {
+      formattedReadingTime: readingTime(postProps.rawContent()).text,
+      formattedPublishDate: formatPublishDate(
+        postProps.frontmatter.publishDate,
+      ),
+      ...postProps,
+    },
   }));
 }
 
-const { Content, frontmatter } = Astro.props.post;
-const { title, description, publishDate } = frontmatter;
-const { slug, readingTime } = getPostData(Astro.props.post);
+/**
+ * `Astro.props` as returned by `getStaticPaths()`
+ */
+type InternalProps = Awaited<
+  ReturnType<typeof getStaticPaths>
+>[number]['props'];
+
+const { slug } = Astro.params;
+const { Content, frontmatter, formattedReadingTime, formattedPublishDate } = Astro.props as InternalProps;
+const { title, description } = frontmatter;
 const permalink = `${Astro.site?.href}${slug}`;
 ---
 
@@ -29,7 +54,7 @@ const permalink = `${Astro.site?.href}${slug}`;
     <p
       class="uppercase font-sans font-semibold text-stone-600 dark:text-stone-300"
     >
-      {formatPublishDate(publishDate)} ~ {readingTime}
+      {formattedPublishDate} ~ {formattedReadingTime}
     </p>
     <h1 class="mt-6 mb-4 text-4xl">{title}</h1>
     <hr class="min-w-min w-1/3 mx-auto my-10" />
