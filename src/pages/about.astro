@@ -12,10 +12,13 @@ const permalink = `${Astro.site?.href}about`;
   permalink={permalink}
   current="about"
 >
-  <div class="container">
+  <div class="my-0 mx-auto max-w-2xl w-full">
     <h1>About</h1>
-    <figure class="about-image">
+    <figure
+      class="mt-0 mx-auto mb-8 max-w-xs lg:float-right lg:-mt-12 lg:-mr-28 lg:mb-8 lg:ml-8"
+    >
       <img
+        class="rounded-lg mb-6"
         src="/assets/about-illustration.webp"
         alt="Illustration of a notebook"
         width="330"
@@ -74,23 +77,3 @@ const permalink = `${Astro.site?.href}about`;
     </p>
   </div>
 </BaseLayout>
-
-<style>
-  .about-image {
-    float: right;
-    margin: -3em -7em 2em 2em;
-    max-width: 300px;
-  }
-
-  .about-image img {
-    border-radius: 8px;
-    margin-bottom: 1.5em;
-  }
-
-  @media (max-width: 1020px) {
-    .about-image {
-      float: none;
-      margin: 0 auto 2em;
-    }
-  }
-</style>

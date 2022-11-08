@@ -1,21 +1,11 @@
 ---
-import Logo from './Logo.astro'
-import Nav from './Nav.astro'
+import Logo from './Logo.astro';
+import Nav from './Nav.astro';
 
 const { current = '' } = Astro.props;
 ---
 
-<style>
-  header {
-    display: flex;
-    margin: 0 auto;
-    max-width: 1400px;
-    padding: 2em;
-    width: 100%;
-  }
-</style>
-
-<header>
+<header class="flex my-0 mx-auto max-w-7xl p-8 w-full">
   <Logo />
   <Nav current={current} />
 </header>

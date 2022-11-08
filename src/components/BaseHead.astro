@@ -1,7 +1,4 @@
 ---
-import '../styles/global.css';
-import path from 'path';
-
 export interface Props {
   title: string;
   description: string;
@@ -9,7 +6,7 @@ export interface Props {
 }
 
 const { title, description, permalink } = Astro.props;
-const socialUrl = path.join(permalink, 'assets/social.png');
+const socialUrl = `${Astro.site?.href ?? '/'}assets/social.png`;
 ---
 
 <!-- Global Metadata -->
